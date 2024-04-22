@@ -16,6 +16,24 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        //setContentView(R.layout.activity_main)
-        }
+
+        var pc1 = Computer(idInventory = "12345", brand = "Asus", model = "ZK-12M", state = "Usado")
+        pc1.setDeviceOpSystem("Linux")
+        var tb1 = Tablet(idInventory = "23456", brand = "Samsung", model = "Adfgh-23", state = "Nuevo")
+        tb1.setDeviceOpSystem("Android")
+        var phone1 = Smartphone(idInventory = "34567", imei = "3562435629", brand = "Samsung", model = "Adfgh-23", state = "Reparacion")
+        phone1.setDeviceOpSystem("IOS")
+
+        val detpc = showDetail(pc1)
+        binding.message.text = detpc
+        val dettb = showDetail(tb1)
+        binding.message1.text = dettb
+        val detph = showDetail(phone1)
+        binding.message2.text = detph
+
     }
+    fun showDetail(device: Device): String{
+        val detail = device.getDeviceDetail()
+        return detail
+    }
+}
